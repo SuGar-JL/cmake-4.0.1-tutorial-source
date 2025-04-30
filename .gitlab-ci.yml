@@ -34,3 +34,4 @@ test-job:       # This job runs in the build stage, which runs first.
     - ./Tutorial 100
     - ./Tutorial 64
     - ./Tutorial 49
+    - ./Tutorial
