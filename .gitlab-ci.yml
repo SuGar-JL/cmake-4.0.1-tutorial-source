@@ -19,23 +19,17 @@
 image: ubuntu:20.04
 
 stages:          # List of stages for jobs, and their order of execution
-  - build
   - test
 
 before_script:
   - apt-get update -qq && apt-get install -y -qq cmake g++ make
 
-build-job:       # This job runs in the build stage, which runs first.
-  stage: build
+test-job:       # This job runs in the build stage, which runs first.
+  stage: test
   script:
     - cd Step1 && mkdir build && cd build
     - cmake ../
     - cmake --build .
-
-unit-test-job:   # This job runs in the test stage.
-  stage: test    # It only starts when the job in the build stage completes successfully.
-  script:
-    - cd Step1
     - ls -l
     - ./Tutorial 100
     - ./Tutorial 64
