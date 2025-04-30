@@ -27,11 +27,4 @@ before_script:
 test-job:       # This job runs in the build stage, which runs first.
   stage: test
   script:
-    - cd Step1 && mkdir build && cd build
-    - cmake ../
-    - cmake --build .
-    - ls -l
-    - ./Tutorial 100
-    - ./Tutorial 64
-    - ./Tutorial 49
-    - ./Tutorial || true
+    - ./test.sh
