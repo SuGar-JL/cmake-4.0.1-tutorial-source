@@ -5,8 +5,10 @@ for dir in Step*/; do
     echo "==================== ${dirname} ===================="
     if [ -f "${dirname}/test.sh" ]; then
         cd "${dirname}" || exit 1
+        rm -rf build
         echo "run ${dirname}/test.sh..."
         ./test.sh || exit 1
+        cd ..
     else
         echo "skip (no test.sh)"
     fi
