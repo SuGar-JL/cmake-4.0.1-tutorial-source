@@ -10,8 +10,11 @@ project(Tutorial VERSION 1.0)
 #   Hint: Use target_compile_features()
 
 # specify the C++ standard
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+# 接口库没有实际的源文件，也不生成任何物理库文件（如 .a, .so, .lib），它只是用来传递构建属性（如编译选项、包含路径、编译特征等）给其他目标。
+add_library(tutorial_compiler_flags INTERFACE)
+# 使用 INTERFACE 表示这个特性将被传递给链接了该接口库的目标。
+# 当其他目标通过 target_link_libraries(... PRIVATE/INTERFACE/PUBLIC tutorial_compiler_flags) 链接这个接口库时，它们也会自动获得 C++11 的构建要求。
+target_compile_features(tutorial_compiler_flags INTERFACE cxx_std_11)
 
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -21,14 +24,13 @@ configure_file(TutorialConfig.h.in TutorialConfig.h)
 
 # add the MathFunctions library
 add_subdirectory(MathFunctions)
-list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/MathFunctions")
 
 # add the executable
 add_executable(Tutorial tutorial.cxx)
 
 # TODO 5: Link Tutorial to tutorial_compiler_flags
 
-target_link_libraries(Tutorial PUBLIC MathFunctions)
+target_link_libraries(Tutorial PUBLIC MathFunctions tutorial_compiler_flags)
 
 # TODO 3: Remove use of EXTRA_INCLUDES
 
@@ -36,5 +38,4 @@ target_link_libraries(Tutorial PUBLIC MathFunctions)
 # so that we will find TutorialConfig.h
 target_include_directories(Tutorial PUBLIC
                            "${PROJECT_BINARY_DIR}"
-                           ${EXTRA_INCLUDES}
                            )
