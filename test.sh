@@ -7,6 +7,7 @@ for dir in Step*/; do
         cd "${dirname}" || exit 1
         rm -rf build
         echo "run ${dirname}/test.sh..."
+        chmod +x test.sh
         ./test.sh || exit 1
         cd ..
     else
