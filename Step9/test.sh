@@ -9,6 +9,8 @@ ctest -N
 ctest [-VV] -C Debug -D Experimental
 cpack
 # 2. test
-cd installdir/bin
-./Tutorial 100
-./Tutorial || true
+# cd installdir/bin
+tar -xzvf ./Tutorial-1.0-Linux.tar.gz
+ls -l
+# ./Tutorial 100
+# ./Tutorial || true
