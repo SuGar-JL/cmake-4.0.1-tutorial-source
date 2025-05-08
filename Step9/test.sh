@@ -10,10 +10,11 @@ ctest [-VV] -C Debug -D Experimental
 cpack
 cpack --config CPackSourceConfig.cmake
 # 2. test
-tar -xzvf ./Tutorial-1.0-Linux.tar.gz
-ls -l ./Tutorial-1.0-Linux
-./Tutorial-1.0-Linux/Tutorial 100
-./Tutorial-1.0-Linux/Tutorial || true
-
+ls -l ./installdir
 ./installdir/bin/Tutorial 100
 ./installdir/bin/Tutorial || true
+
+tar -xzvf ./Tutorial-1.0-Linux.tar.gz
+ls -l ./Tutorial-1.0-Linux
+./Tutorial-1.0-Linux/bin/Tutorial 100
+./Tutorial-1.0-Linux/bin/Tutorial || true
