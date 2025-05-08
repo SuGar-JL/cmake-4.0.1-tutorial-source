@@ -11,10 +11,9 @@ cpack
 cpack --config CPackSourceConfig.cmake
 # 2. test
 tar -xzvf ./Tutorial-1.0-Linux.tar.gz
-ls -l
-./Tutorial-1.0-Linux 100
-./Tutorial-1.0-Linux || true
+ls -l ./Tutorial-1.0-Linux
+./Tutorial-1.0-Linux/Tutorial 100
+./Tutorial-1.0-Linux/Tutorial || true
 
-cd installdir/bin
-./Tutorial 100
-./Tutorial || true
+./installdir/bin/Tutorial 100
+./installdir/bin/Tutorial || true
