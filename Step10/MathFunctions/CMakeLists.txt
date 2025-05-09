@@ -12,6 +12,9 @@ option(USE_MYMATH "Use tutorial provided math implementation" ON)
 if(USE_MYMATH)
 
   target_compile_definitions(MathFunctions PRIVATE "USE_MYMATH")
+  # define the symbol stating we are using the declspec(dllexport) when
+  # building on windows
+  target_compile_definitions(MathFunctions PRIVATE "EXPORTING_MYMATH")
 
   include(MakeTable.cmake) # generates Table.h
 
@@ -20,7 +23,10 @@ if(USE_MYMATH)
               mysqrt.cxx
               ${CMAKE_CURRENT_BINARY_DIR}/Table.h
               )
-
+  # state that SqrtLibrary need PIC when the default is shared libraries
+  set_target_properties(SqrtLibrary PROPERTIES
+    POSITION_INDEPENDENT_CODE ${BUILD_SHARED_LIBS}
+  )
   # state that we depend on our binary dir to find Table.h
   target_include_directories(SqrtLibrary PRIVATE
                              ${CMAKE_CURRENT_BINARY_DIR}
