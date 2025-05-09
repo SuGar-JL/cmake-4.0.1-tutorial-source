@@ -4,7 +4,7 @@
 mkdir -p build && cd build
 cmake ../
 cmake --build .
-cmake --install . --prefix "./installdir"
+cmake --install . #--prefix "./installdir"
 ctest -N
 ctest [-VV] -C Debug -D Experimental
 cpack
