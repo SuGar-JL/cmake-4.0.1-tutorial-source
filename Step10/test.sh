@@ -4,12 +4,14 @@
 mkdir -p build && cd build
 cmake ../
 cmake --build .
-cmake --install . #--prefix "./installdir"
+# cmake --install . --prefix "/usr" # 默认安装到 /usr/local， 但是找不到共享库
+cmake --install . --prefix "./installdir"
 ctest -N
-ctest [-VV] -C Debug -D Experimental
+# ctest [-VV] -C Debug -D Experimental
 cpack
 cpack --config CPackSourceConfig.cmake
 ls -l .
+export LD_LIBRARY_PATH=./installdir/lib:$LD_LIBRARY_PATH
 whereis Tutorial
 # 2. test with install dir
 Tutorial 100
