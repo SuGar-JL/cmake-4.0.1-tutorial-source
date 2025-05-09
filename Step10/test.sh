@@ -24,5 +24,5 @@ tar -xzvf ./Tutorial-1.0-Linux.tar.gz
 cp ./Tutorial-1.0-Linux/lib/libMathFunctions.so ./Tutorial-1.0-Linux/bin
 tree ./Tutorial-1.0-Linux
 cd ./Tutorial-1.0-Linux/bin
-./Tutorial-1.0-Linux/bin/Tutorial 100
-./Tutorial-1.0-Linux/bin/Tutorial || true
+./Tutorial 100
+./Tutorial || true
