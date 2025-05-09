@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # 1. build
-cd debug
+mkdir debug && cd debug
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 cmake --build .
-cd ../release
+cd ..
+mkdir release && cd release
 cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ctest -N
