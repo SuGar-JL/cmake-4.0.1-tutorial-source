@@ -10,6 +10,8 @@ ctest [-VV] -C Debug -D Experimental
 cpack
 cpack --config CPackSourceConfig.cmake
 ls -l .
+./Tutorial 100
+./Tutorial || true
 # 2. test with install dir
 # Linux 动态链接器默认只在标准库路径（如 /usr/lib）和程序的当前目录下查找 .so 文件
 cp ./installdir/lib/libMathFunctions.so ./installdir/bin
