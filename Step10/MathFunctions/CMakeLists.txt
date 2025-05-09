@@ -48,6 +48,6 @@ set(installable_libs MathFunctions tutorial_compiler_flags)
 if(TARGET SqrtLibrary)
   list(APPEND installable_libs SqrtLibrary)
 endif()
-install(TARGETS ${installable_libs} DESTINATION lib)
+install(TARGETS ${installable_libs} DESTINATION bin)
 # install include headers
 install(FILES MathFunctions.h DESTINATION include)
